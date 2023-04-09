@@ -9,8 +9,15 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
+var ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+var directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+directionalLight.position.set(1, 1, 1);
+
+scene.add(ambientLight);
+scene.add(directionalLight);
+
 const geometry = new THREE.BoxGeometry( 1, 1, 1 );
-const material = new THREE.MeshBasicMaterial( { color: 0x9300ff } );
+const material = new THREE.MeshPhongMaterial( { color: 0x9300ff } );
 const cube = new THREE.Mesh( geometry, material );
 scene.add( cube );
 
